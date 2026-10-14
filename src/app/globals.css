@@ -1,0 +1,31 @@
+@import "tailwindcss";
+@source not "../../*.md";
+@source not "../**/*.test.ts";
+@source not "../**/*.test.tsx";
+@source not "../test";
+
+@theme {
+  --font-sans:
+    var(--font-atkinson-hyperlegible), ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #152938;
+  --color-muted: #7191a5;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    @apply text-ink font-sans;
+  }
+
+  button:not(:disabled) {
+    @apply cursor-pointer;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-current;
+  }
+}
