@@ -4,6 +4,8 @@
 @source not "../**/*.test.tsx";
 @source not "../test";
 
+@custom-variant setup (&:where(body:has([data-screen="setup"]), body:has([data-screen="setup"]) *));
+
 @theme {
   --font-sans:
     var(--font-atkinson-hyperlegible), ui-sans-serif, system-ui, sans-serif;
@@ -22,6 +24,13 @@
   --radius-box: 0.3125rem;
   --radius-card: 0.625rem;
   --radius-panel: 1.25rem;
+
+  --default-transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+
+  --text-logo: 2rem;
+  --text-logo--line-height: 2.5rem;
+  --text-logo-md: 2.5rem;
+  --text-logo-md--line-height: 3.125rem;
 
   --text-title: 1.5rem;
   --text-title--line-height: 1.875rem;
