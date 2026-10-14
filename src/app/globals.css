@@ -9,7 +9,86 @@
     var(--font-atkinson-hyperlegible), ui-sans-serif, system-ui, sans-serif;
 
   --color-ink: #152938;
-  --color-muted: #7191a5;
+  --color-navy: #304859;
+  --color-steel: #6395b8;
+  --color-mist: #bcced9;
+  --color-cloud: #dfe7ec;
+  --color-dialog: #f2f2f2;
+  --color-paper: #fcfcfc;
+  --color-muted: #4f6b7c;
+  --color-accent: #fda214;
+  --color-accent-hover: #ffb84a;
+
+  --radius-box: 0.3125rem;
+  --radius-card: 0.625rem;
+  --radius-panel: 1.25rem;
+
+  --text-title: 1.5rem;
+  --text-title--line-height: 1.875rem;
+  --text-title-md: 3rem;
+  --text-title-md--line-height: 3.75rem;
+
+  --text-tile: 2.5rem;
+  --text-tile--line-height: 3.125rem;
+  --text-tile-md: 3.5rem;
+  --text-tile-md--line-height: 4.3125rem;
+
+  --text-tile-dense: 1.5rem;
+  --text-tile-dense--line-height: 1.875rem;
+  --text-tile-dense-md: 2.75rem;
+  --text-tile-dense-md--line-height: 3.4375rem;
+
+  --text-cta: 1.125rem;
+  --text-cta--line-height: 1.375rem;
+  --text-cta-md: 2rem;
+  --text-cta-md--line-height: 2.5rem;
+
+  --text-stat: 1.5rem;
+  --text-stat--line-height: 1.875rem;
+  --text-stat-md: 2rem;
+  --text-stat-md--line-height: 2.5rem;
+
+  --text-result: 1.25rem;
+  --text-result--line-height: 1.5625rem;
+  --text-result-md: 2rem;
+  --text-result-md--line-height: 2.5rem;
+
+  --text-option: 1rem;
+  --text-option--line-height: 1.25rem;
+  --text-option-md: 1.625rem;
+  --text-option-md--line-height: 2rem;
+
+  --text-label: 0.9375rem;
+  --text-label--line-height: 1.1875rem;
+  --text-label-md: 1.25rem;
+  --text-label-md--line-height: 1.5625rem;
+
+  --text-menu: 1rem;
+  --text-menu--line-height: 1.25rem;
+
+  --text-button: 1.125rem;
+  --text-button--line-height: 1.375rem;
+  --text-button-md: 1.25rem;
+  --text-button-md--line-height: 1.5625rem;
+
+  --text-stat-label: 0.9375rem;
+  --text-stat-label--line-height: 1.1875rem;
+  --text-stat-label-md: 1.125rem;
+  --text-stat-label-md--line-height: 1.375rem;
+
+  --text-subtitle: 0.875rem;
+  --text-subtitle--line-height: 1.0625rem;
+  --text-subtitle-md: 1.125rem;
+  --text-subtitle-md--line-height: 1.375rem;
+
+  --text-result-label: 0.8125rem;
+  --text-result-label--line-height: 1rem;
+  --text-result-label-md: 1.125rem;
+  --text-result-label-md--line-height: 1.375rem;
+
+  --text-turn: 0.8125rem;
+  --text-turn--line-height: 1rem;
+  --text-turn--letter-spacing: 0.3846em;
 }
 
 @layer base {
@@ -18,7 +97,7 @@
   }
 
   body {
-    @apply text-ink font-sans;
+    @apply text-ink font-sans font-bold;
   }
 
   button:not(:disabled) {
@@ -26,6 +105,6 @@
   }
 
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-current;
+    @apply outline-ink outline-2 outline-offset-2;
   }
 }
