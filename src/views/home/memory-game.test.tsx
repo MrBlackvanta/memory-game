@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 import MemoryGame from "./memory-game";
@@ -21,8 +21,18 @@ describe("MemoryGame", () => {
 
     expect(screen.queryByRole("form")).not.toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: "New Game" }),
+      within(screen.getByRole("banner")).getByRole("heading", { level: 1 }),
     ).toBeInTheDocument();
+  });
+
+  it("restarts without dropping focus", async () => {
+    const user = userEvent.setup();
+    render(<MemoryGame />);
+
+    await user.click(screen.getByRole("button", { name: "Start Game" }));
+    await user.click(screen.getByRole("button", { name: "Restart" }));
+
+    expect(screen.getByRole("button", { name: "Restart" })).toHaveFocus();
   });
 
   it("marks only the setup screen for the ink page", async () => {

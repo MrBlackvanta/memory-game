@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui";
 import { SETTING_FIELDS, SITE_NAME, type Settings } from "@/data";
 import { readSettings } from "@/lib";
 import type { SubmitEvent } from "react";
@@ -42,12 +43,13 @@ export default function SetupScreen({
             checked={preselected[field.name]}
           />
         ))}
-        <button
+        <Button
           type="submit"
-          className="bg-accent text-cta text-navy hover:bg-accent-hover md:text-cta-md mt-2 h-12 rounded-full motion-safe:transition-colors md:mt-0 md:h-17.5"
+          variant="primary"
+          className="text-cta md:text-cta-md mt-2 h-12 md:mt-0 md:h-17.5"
         >
           Start Game
-        </button>
+        </Button>
       </form>
     </main>
   );
