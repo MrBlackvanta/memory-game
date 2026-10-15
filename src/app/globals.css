@@ -40,15 +40,15 @@
   --text-title-md: 3rem;
   --text-title-md--line-height: 3.75rem;
 
-  --text-tile: 2.5rem;
-  --text-tile--line-height: 3.125rem;
-  --text-tile-md: 3.5rem;
-  --text-tile-md--line-height: 4.3125rem;
+  --text-tile: min(2.5rem, 12.5cqi);
+  --text-tile--line-height: 1;
+  --text-tile-md: min(3.5rem, 11cqi);
+  --text-tile-md--line-height: 1;
 
-  --text-tile-dense: 1.5rem;
-  --text-tile-dense--line-height: 1.875rem;
-  --text-tile-dense-md: 2.75rem;
-  --text-tile-dense-md--line-height: 3.4375rem;
+  --text-tile-dense: min(1.5rem, 7.5cqi);
+  --text-tile-dense--line-height: 1;
+  --text-tile-dense-md: min(2.75rem, 8cqi);
+  --text-tile-dense-md--line-height: 1;
 
   --text-cta: 1.125rem;
   --text-cta--line-height: 1.375rem;

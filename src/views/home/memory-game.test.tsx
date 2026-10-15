@@ -1,3 +1,4 @@
+import { ICONS } from "@/data";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
@@ -23,6 +24,23 @@ describe("MemoryGame", () => {
     expect(
       within(screen.getByRole("banner")).getByRole("heading", { level: 1 }),
     ).toBeInTheDocument();
+  });
+
+  it("deals the board the setup asked for", async () => {
+    const user = userEvent.setup();
+    render(<MemoryGame />);
+
+    await user.click(screen.getByText("Icons"));
+    await user.click(screen.getByText("6x6"));
+    await user.click(screen.getByRole("button", { name: "Start Game" }));
+    const board = screen.getByRole("grid", { name: "Tiles" });
+    const [firstTile] = within(board).getAllByRole("button");
+    await user.click(firstTile);
+
+    expect(within(board).getAllByRole("row")).toHaveLength(6);
+    expect(ICONS.map((icon) => icon.name)).toContain(
+      firstTile.getAttribute("aria-label"),
+    );
   });
 
   it("restarts without dropping focus", async () => {

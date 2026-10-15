@@ -1,3 +1,5 @@
+import type { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+
 export type Theme = "numbers" | "icons";
 
 export type PlayerCount = 1 | 2 | 3 | 4;
@@ -19,4 +21,9 @@ export type SettingField = {
   name: keyof Settings;
   legend: string;
   options: readonly Option<Settings[keyof Settings]>[];
+};
+
+export type TileIcon = {
+  name: string;
+  definition: IconDefinition;
 };

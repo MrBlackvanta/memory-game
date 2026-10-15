@@ -15,6 +15,7 @@ export default function MemoryGame() {
   if (view.screen === "game") {
     return (
       <GameScreen
+        settings={view.settings}
         onNewGame={() => setView({ screen: "setup", previous: view.settings })}
       />
     );

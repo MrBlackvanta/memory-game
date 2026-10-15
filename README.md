@@ -13,6 +13,7 @@ My solution to the [Memory game](https://www.frontendmentor.io/challenges/memory
 - React
 - TypeScript
 - Tailwind CSS
+- [Font Awesome Free](https://fontawesome.com) icons, under [CC BY 4.0](https://fontawesome.com/license/free)
 
 ## Author
 
