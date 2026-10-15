@@ -23,12 +23,14 @@ afterEach(() => {
 const SOLVE = [0, 8, 1, 9, 2, 10, 3, 11, 4, 12, 5, 13, 6, 14, 7, 15];
 
 function renderGame(players: PlayerCount = 1) {
-  return render(
+  const onNewGame = vi.fn();
+  const rendered = render(
     <GameScreen
       settings={{ theme: "numbers", players, gridSize: 4 }}
-      onNewGame={vi.fn()}
+      onNewGame={onNewGame}
     />,
   );
+  return { ...rendered, onNewGame };
 }
 
 function tiles() {
@@ -275,6 +277,59 @@ describe("GameScreen", () => {
     flip(...indexes);
 
     expect(status().textContent).toBe(message);
+  });
+
+  it("marks no one's turn once the game is over", () => {
+    renderGame(2);
+
+    flip(...SOLVE);
+
+    expect(currentPlayer()).toBe(-1);
+    expect(screen.queryByText("Current turn")).not.toBeInTheDocument();
+  });
+
+  it("opens the results on the last match", () => {
+    renderGame();
+
+    flip(...SOLVE.slice(0, -1));
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+
+    flip(SOLVE.at(-1)!);
+    expect(screen.getByRole("dialog")).toHaveAccessibleName("You did it!");
+  });
+
+  it("deals a new round from the results with the first tile focused", () => {
+    renderGame();
+
+    flip(...SOLVE);
+    fireEvent.click(
+      within(screen.getByRole("dialog")).getByRole("button", {
+        name: "Restart",
+      }),
+    );
+
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(names(0, 16).every((name) => name === "Hidden tile")).toBe(true);
+    expect(tiles()[0]).toHaveFocus();
+  });
+
+  it("leaves focus on the header's Restart", () => {
+    renderGame();
+    const button = screen.getByRole("button", { name: "Restart" });
+
+    button.focus();
+    fireEvent.click(button);
+
+    expect(button).toHaveFocus();
+  });
+
+  it("goes back to setup from the results", () => {
+    const { onNewGame } = renderGame();
+
+    flip(...SOLVE);
+    fireEvent.click(screen.getByRole("button", { name: "Set Up New Game" }));
+
+    expect(onNewGame).toHaveBeenCalledOnce();
   });
 
   it("clears the announcement when the next move starts", () => {

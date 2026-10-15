@@ -3,7 +3,7 @@ import { playerName } from "@/lib";
 
 type PlayerScoresProps = {
   scores: readonly number[];
-  turn: number;
+  turn: number | null;
 };
 
 export default function PlayerScores({ scores, turn }: PlayerScoresProps) {

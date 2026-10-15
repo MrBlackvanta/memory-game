@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui";
+import { Button, Dialog } from "@/components/ui";
 import { useRef } from "react";
 
 type GameMenuProps = {
@@ -46,12 +46,12 @@ export default function GameMenu({
       >
         Menu
       </Button>
-      <dialog
+      <Dialog
         ref={dialogRef}
         aria-label="Menu"
         closedby="any"
         onClose={onClose}
-        className="inset-x-6 m-auto w-auto max-w-163.5 gap-4 rounded-card bg-dialog p-6 backdrop:bg-black/50 open:grid motion-safe:backdrop:transition-colors starting:backdrop:bg-transparent"
+        className="gap-4 p-6 open:grid"
       >
         <Button
           variant="primary"
@@ -75,7 +75,7 @@ export default function GameMenu({
         >
           Resume Game
         </Button>
-      </dialog>
+      </Dialog>
     </>
   );
 }

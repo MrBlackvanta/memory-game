@@ -118,6 +118,10 @@
 
   @media (prefers-reduced-motion: no-preference) {
     transition: --count 450ms var(--default-transition-timing-function);
+
+    @starting-style {
+      --count: 0 !important;
+    }
   }
 }
 
