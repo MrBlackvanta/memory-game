@@ -2,7 +2,7 @@ import { ICONS, type GridSize, type Theme } from "@/data";
 import { gameReducer, newGame, type GameAction } from "@/lib";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vite-plus/test";
 import Board from "./board";
 
 function deckFor(gridSize: GridSize) {
@@ -22,7 +22,7 @@ function renderBoard({
   autoFocus?: boolean;
 } = {}) {
   const game = flips
-    .map((index): GameAction => ({ type: "flip", index }))
+    .map((index): GameAction => ({ type: "flip", index, at: 0 }))
     .reduce(
       gameReducer,
       newGame({ theme, players: 1, gridSize }, deckFor(gridSize)),

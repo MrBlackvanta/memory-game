@@ -21,7 +21,7 @@ export default function Tile({ label, state, children, ...props }: TileProps) {
       <span
         className={`grid size-full transform-3d motion-safe:transition-transform motion-safe:duration-300 ${hidden ? "" : "rotate-y-180"}`}
       >
-        <span className="bg-navy group-hover/tile:bg-steel col-start-1 row-start-1 rounded-full backface-hidden motion-safe:transition-colors" />
+        <span className="col-start-1 row-start-1 rounded-full bg-navy backface-hidden group-hover/tile:bg-steel motion-safe:transition-colors" />
         <span
           className={`col-start-1 row-start-1 rotate-y-180 backface-hidden motion-safe:transition-[visibility] motion-safe:duration-300 ${hidden ? "invisible" : ""}`}
         >

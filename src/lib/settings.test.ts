@@ -5,7 +5,7 @@ import {
   THEME_OPTIONS,
   type Settings,
 } from "@/data";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "vite-plus/test";
 import { readSettings } from "./settings";
 
 function formData(entries: Record<string, string | Blob>) {

@@ -34,7 +34,7 @@ export default function SetupScreen({
         ref={focusOnMount ? focusCheckedOption : undefined}
         aria-label="Game setup"
         onSubmit={handleSubmit}
-        className="bg-paper rounded-card md:rounded-panel mt-11.25 flex w-full max-w-163.5 flex-col gap-6 p-6 md:mt-19.5 md:gap-8 md:p-14"
+        className="mt-11.25 flex w-full max-w-163.5 flex-col gap-6 rounded-card bg-paper p-6 md:mt-19.5 md:gap-8 md:rounded-panel md:p-14"
       >
         {SETTING_FIELDS.map((field) => (
           <OptionGroup
@@ -46,7 +46,7 @@ export default function SetupScreen({
         <Button
           type="submit"
           variant="primary"
-          className="text-cta md:text-cta-md mt-2 h-12 md:mt-0 md:h-17.5"
+          className="mt-2 h-12 text-cta md:mt-0 md:h-17.5 md:text-cta-md"
         >
           Start Game
         </Button>

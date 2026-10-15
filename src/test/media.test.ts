@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vite-plus/test";
 import { mediaListenerCount, setMediaMatch } from "./media";
 
 const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";

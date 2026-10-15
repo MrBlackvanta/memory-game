@@ -1,10 +1,15 @@
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vite-plus/test";
 import GameHeader from "./game-header";
 
 function renderHeader() {
-  const callbacks = { onRestart: vi.fn(), onNewGame: vi.fn() };
+  const callbacks = {
+    onRestart: vi.fn(),
+    onNewGame: vi.fn(),
+    onMenuOpen: vi.fn(),
+    onMenuClose: vi.fn(),
+  };
   render(<GameHeader {...callbacks} />);
   return { ...callbacks, user: userEvent.setup() };
 }
@@ -84,5 +89,27 @@ describe("GameHeader", () => {
     expect(menu).not.toHaveAttribute("open");
     expect(onRestart).toHaveBeenCalledTimes(restarts);
     expect(onNewGame).toHaveBeenCalledTimes(newGames);
+  });
+
+  it("reports the menu opening and closing", async () => {
+    const { onMenuOpen, onMenuClose, user } = renderHeader();
+
+    const menu = await openMenu(user);
+
+    expect(onMenuOpen).toHaveBeenCalledOnce();
+    expect(onMenuClose).not.toHaveBeenCalled();
+
+    await user.click(within(menu).getByRole("button", { name: "Resume Game" }));
+
+    expect(onMenuClose).toHaveBeenCalledOnce();
+  });
+
+  it("reports a close the menu did not start itself", async () => {
+    const { onMenuClose, user } = renderHeader();
+    const menu = await openMenu(user);
+
+    fireEvent(menu, new Event("close"));
+
+    expect(onMenuClose).toHaveBeenCalledOnce();
   });
 });

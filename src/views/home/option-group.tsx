@@ -14,14 +14,14 @@ export default function OptionGroup({
 
   return (
     <fieldset className="min-w-0">
-      <legend className="text-muted text-label md:text-label-md">
+      <legend className="text-label text-muted md:text-label-md">
         {legend}
       </legend>
       <div className={`mt-2.75 grid auto-cols-fr grid-flow-col md:mt-4 ${gap}`}>
         {options.map((option) => (
           <label
             key={option.value}
-            className="bg-mist text-option text-navy has-checked:bg-navy has-checked:text-paper has-focus-visible:outline-ink hover:not-has-checked:bg-steel hover:not-has-checked:text-paper md:text-option-md relative flex h-10 cursor-pointer items-center justify-center rounded-full has-focus-visible:outline-2 has-focus-visible:outline-offset-2 motion-safe:transition-colors md:h-13"
+            className="relative flex h-10 cursor-pointer items-center justify-center rounded-full bg-mist text-option text-navy hover:not-has-checked:bg-steel hover:not-has-checked:text-paper has-checked:bg-navy has-checked:text-paper has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-ink motion-safe:transition-colors md:h-13 md:text-option-md"
           >
             <input
               type="radio"

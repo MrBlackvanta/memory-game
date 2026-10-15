@@ -7,9 +7,11 @@
     "dev": "next dev",
     "build": "next build && node scripts/fix-segment-export.mjs out",
     "start": "next start",
-    "lint": "eslint",
-    "test": "vitest run",
-    "test:watch": "vitest"
+    "check": "vp check",
+    "lint": "vp lint",
+    "format": "vp fmt",
+    "test": "vp test run",
+    "test:watch": "vp test"
   },
   "dependencies": {
     "@fortawesome/free-regular-svg-icons": "^7.3.1",
@@ -28,13 +30,10 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "^9",
-    "eslint-config-next": "16.2.12",
+    "eslint-plugin-better-tailwindcss": "4.9.1",
     "jsdom": "^30.1.2",
-    "prettier": "^3.8.3",
-    "prettier-plugin-tailwindcss": "0.0.0-insiders.f7d2598",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "vitest": "^5.0.3"
+    "vite-plus": "catalog:"
   }
 }

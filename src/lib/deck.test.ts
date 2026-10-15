@@ -1,5 +1,5 @@
 import { ICONS, type Settings } from "@/data";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "vite-plus/test";
 import { createDeck, shuffle } from "./deck";
 
 function sequence(...values: number[]) {

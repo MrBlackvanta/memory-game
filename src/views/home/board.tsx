@@ -1,7 +1,7 @@
 import { Icon } from "@/components/ui";
 import { ICONS, type GridSize, type Theme } from "@/data";
 import { targetCell, tileState, type Game } from "@/lib";
-import { useState, type KeyboardEvent } from "react";
+import { useRef, useState, type KeyboardEvent } from "react";
 import Tile from "./tile";
 
 type BoardProps = {
@@ -33,26 +33,27 @@ function describeFace(theme: Theme, face: number) {
 
 export default function Board({ game, autoFocus, onFlip }: BoardProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const gridRef = useRef<HTMLDivElement>(null);
   const { theme, gridSize } = game.settings;
   const layout = LAYOUTS[gridSize];
   const rows = Array.from({ length: gridSize }, (_, row) =>
     game.tiles.slice(row * gridSize, (row + 1) * gridSize),
   );
 
-  function moveFocus(event: KeyboardEvent<HTMLDivElement>) {
-    const target = targetCell(activeIndex, event.key, gridSize, event.ctrlKey);
+  function moveFocus(event: KeyboardEvent<HTMLButtonElement>, index: number) {
+    const target = targetCell(index, event.key, gridSize, event.ctrlKey);
     if (target === null) return;
 
     event.preventDefault();
-    event.currentTarget.querySelectorAll("button")[target].focus();
+    gridRef.current?.querySelectorAll("button")[target].focus();
   }
 
   return (
     <div className="@container-size grid min-h-70 place-items-center">
       <div
+        ref={gridRef}
         role="grid"
         aria-label="Tiles"
-        onKeyDown={moveFocus}
         className={`@container grid ${layout.board}`}
       >
         {rows.map((tiles, row) => (
@@ -69,6 +70,7 @@ export default function Board({ game, autoFocus, onFlip }: BoardProps) {
                     autoFocus={autoFocus && index === 0}
                     tabIndex={index === activeIndex ? 0 : -1}
                     onFocus={() => setActiveIndex(index)}
+                    onKeyDown={(event) => moveFocus(event, index)}
                     onClick={() => onFlip(index)}
                   >
                     {content}
