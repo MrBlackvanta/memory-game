@@ -4,7 +4,7 @@
 @source not "../**/*.test.tsx";
 @source not "../test";
 
-@custom-variant setup (&:where(body:has([data-screen="setup"]), body:has([data-screen="setup"]) *));
+@custom-variant dark (&:where(body:has([data-theme="dark"]), body:has([data-theme="dark"]) *));
 
 @theme {
   --font-sans:

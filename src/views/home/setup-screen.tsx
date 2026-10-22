@@ -26,7 +26,7 @@ export default function SetupScreen({
 
   return (
     <main
-      data-screen="setup"
+      data-theme="dark"
       className="flex min-h-dvh flex-col items-center justify-center p-6"
     >
       <h1 className="text-logo text-paper md:text-logo-md">{SITE_NAME}</h1>

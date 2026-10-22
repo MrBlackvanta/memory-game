@@ -53,15 +53,15 @@ describe("MemoryGame", () => {
     expect(screen.getByRole("button", { name: "Restart" })).toHaveFocus();
   });
 
-  it("marks only the setup screen for the ink page", async () => {
+  it("puts only the setup screen on the dark theme", async () => {
     const user = userEvent.setup();
     render(<MemoryGame />);
 
-    expect(screen.getByRole("main")).toHaveAttribute("data-screen", "setup");
+    expect(screen.getByRole("main")).toHaveAttribute("data-theme", "dark");
 
     await user.click(screen.getByRole("button", { name: "Start Game" }));
 
-    expect(screen.getByRole("main")).not.toHaveAttribute("data-screen");
+    expect(screen.getByRole("main")).not.toHaveAttribute("data-theme");
   });
 
   it("returns to the setup with the last settings checked and focused", async () => {

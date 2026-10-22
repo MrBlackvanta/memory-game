@@ -56,7 +56,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${atkinsonHyperlegible.variable} antialiased`}>
-      <body className="relative min-h-dvh bg-paper setup:bg-ink">
+      <body className="relative min-h-dvh bg-paper dark:bg-ink">
         {children}
         <Signature />
       </body>
